@@ -24,9 +24,9 @@ X_train = [[1.0, 1.0], [1.0, 2.0], [2.0, 1.0], [2.0, 2.0],
 y_train = [1, 1, 1, 3, 1, 3, 3, 3]
 X_test = [[1.0, 2.2], [4.5, 1.0]]
 
-classifier = DecisionTree(2)
-classifier.fit(X_train, y_train)
-y_test = classifier.predict(X_test)
+clf = DecisionTree(2)
+clf.fit(X_train, y_train)
+y_test = clf.predict(X_test)
 print(y_test)
 
 # [1, 1]
