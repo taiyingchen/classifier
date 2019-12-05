@@ -63,8 +63,8 @@ num_attr_values = [
 num_classes = 7
 smoothing_factor = 0.1
 
-clf = NaiveBayes(smoothing_factor, num_classes)
-clf.fit(X_train, y_train, num_attr_values)
+clf = NaiveBayes(smoothing_factor, num_classes, num_attr_values)
+clf.fit(X_train, y_train)
 y_test = clf.predict(X_test)
 print(y_test)
 # [4]

@@ -2,13 +2,14 @@ from collections import defaultdict, Counter
 
 
 class NaiveBayes():
-    def __init__(self, smoothing_factor, num_classes):
+    def __init__(self, smoothing_factor, num_classes, num_attr_values):
         self.smoothing_factor = smoothing_factor
         self.num_classes = num_classes
+        self.num_attr_values = num_attr_values
         self.prob_y = {}
         self.prob_x_given_y = defaultdict(list)
 
-    def fit(self, X, y, num_attr_values=None):
+    def fit(self, X, y):
         classes = Counter(y)
         y2X = defaultdict(list)
         for i in range(len(y)):
@@ -27,9 +28,9 @@ class NaiveBayes():
                     attr_count.append(X_list[i][attr])
                 attr_count = Counter(attr_count)
                 prob_values = {}
-                for attr_value in num_attr_values[attr]:
+                for attr_value in self.num_attr_values[attr]:
                     prob_values[attr_value] = (
-                        attr_count[attr_value] + self.smoothing_factor) / (len(X_list) + self.smoothing_factor * len(num_attr_values[attr]))
+                        attr_count[attr_value] + self.smoothing_factor) / (len(X_list) + self.smoothing_factor * len(self.num_attr_values[attr]))
                 self.prob_x_given_y[c].append(prob_values)
 
     def predict(self, X):
@@ -75,8 +76,8 @@ def main():
     num_classes = 7
     smoothing_factor = 0.1
 
-    clf = NaiveBayes(smoothing_factor, num_classes)
-    clf.fit(X_train, y_train, num_attr_values)
+    clf = NaiveBayes(smoothing_factor, num_classes, num_attr_values)
+    clf.fit(X_train, y_train)
     y_test = clf.predict(X_test)
     print(y_test)
 
