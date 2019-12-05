@@ -24,7 +24,6 @@ class DecisionTree():
             raise ValueError('Length of X does not match lenght of y')
 
         self.num_classes = len(set(y))
-        self.num_data = len(X)
         self.num_attrs = len(X[0])
         self.root = Node(0)
 
@@ -34,12 +33,10 @@ class DecisionTree():
         # Stopping criteria
         if node.depth >= self.max_depth or len(set(y)) <= 1:
             node.is_leaf = True
-            node.leaf_class = max(
-                Counter(y).most_common(), key=lambda v: v[1])[0]
+            node.leaf_class = max(Counter(y).most_common(), key=lambda v: v[1])[0]
         else:
             split_attr, split_point = self.find_best_split(X, y)
-            X_left, X_right, y_left, y_right = self.split(
-                X, y, split_attr, split_point)
+            X_left, X_right, y_left, y_right = self.split(X, y, split_attr, split_point)
             node.attr = split_attr
             node.split_point = split_point
             depth = node.depth
