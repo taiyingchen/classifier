@@ -16,7 +16,7 @@ Required only Python (>= 3.6)
 
 ## Usage
 
-### DecisionTree
+### Decision Tree Classifier
 
 ```python
 from classifier import DecisionTree
@@ -33,7 +33,7 @@ print(y_test)
 # [1, 1]
 ```
 
-### NaiveBayes
+### Naive Bayes Classifier
 
 ```python
 from classifier import NaiveBayes
