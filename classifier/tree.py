@@ -49,14 +49,14 @@ class DecisionTree():
 
     def predict(self, X):
         y = []
-        for x in X:
-            y.append(self.predict_helper(x))
+        for Xi in X:
+            y.append(self.predict_helper(Xi))
         return y
 
-    def predict_helper(self, x):
+    def predict_helper(self, X):
         node = self.root
         while not node.is_leaf:
-            if x[node.attr] <= node.split_point:
+            if X[node.attr] <= node.split_point:
                 node = node.left
             else:
                 node = node.right
