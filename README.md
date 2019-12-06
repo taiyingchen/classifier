@@ -55,7 +55,7 @@ X_test = [
     [0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0]
 ]
 # Specify unique values for each attribute
-# e.g. All of the attribute are binary 
+# e.g. All of the attributes are binary 
 # Expect one have values: [0, 2, 4, 5, 6, 8]
 num_attr_values = [
     [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1],
